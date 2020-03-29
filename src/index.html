@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <title>JavaScriptの即時実行関数を使ってみる</title>
+</head>
+<body>
+  <pre><code>
+    // 通常関数の定義・実行
+    function hoge() {
+      alert('normal function');
+    }
+    hoge();
+
+
+    // 即時関数
+    (function hoge() {
+      alert('sokuji function');
+    })();
+    
+    var a = 111;
+    
+    // 即時関数(無名関数)
+    (function(b) {
+      alert('mumei function['+b+']');
+    })(a);
+    
+    // static変数を利用したサンプル
+    function outer() {
+      var x = 1;
+      return function() {
+        alert(x);
+        x = x + 1;
+      };
+    }
+    var f =  outer(); 
+    f();  // 1
+    f();  // 2
+    f();  // 3
+
+    // これも即時関数(1)
+    +function() {
+      alert('これでも即時関数です。実はカッコである必要はないのです');
+    }();
+  
+    // これも即時関数(2)
+    var a = 2;
+    (function hoge(b) {
+      alert('sokuji function('+ b +')');
+    }(a));
+  </code></pre>
+  <script>
+    /**
+    // 通常関数の定義・実行
+    function hoge() {
+      alert('normal function');
+    }
+    hoge();
+    */
+
+    /**
+    // 即時関数
+    (function hoge() {
+      alert('sokuji function');
+    })();
+    */
+    
+    /**
+    // 即時関数(無名関数)
+    var a = 111;
+    (function(b) {
+      alert('mumei function['+b+']');
+    })(a);
+    */
+    
+    /**
+    // static変数を利用したサンプル
+    function outer() {
+      var x = 1;
+      return function (){
+        alert(x);
+        x = x + 1;
+      };
+    }
+    var f =  outer(); 
+    f();  // 1
+    f();  // 2
+    f();  // 3
+    */
+    
+    /**
+    // これも即時関数(1)
+    +function() {
+      alert('これでも即時関数です。実はカッコである必要はないのです');
+    }();
+    */
+    
+    // これも即時関数(2)
+    var a = 2;
+    (function hoge(b) {
+      alert('sokuji function('+ b +')');
+    }(a));
+  </script>
+</body>
+</html>
